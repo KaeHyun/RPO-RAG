@@ -25,6 +25,7 @@ def normalize(s: str) -> str:
 
 class PromptBuilder(object):
     BASE_INSTRUCTION= """"""
+    GRAPH_CONTEXT = """{context}\n\n""" #"""Reasoning Paths:\n{context}\n\n"""
     CUSTOM_INSTRUCTION = """Based on the Answer-Centered-Paths, please answer the given question.  
             The Answer-Centered-Paths helps you to step-by-step reasoning to answer the question.  
 
@@ -128,6 +129,8 @@ class PromptBuilder(object):
                 content_lines = []
         
         input = self.QUESTION.format(question = question)
+
+        instruction = self.CUSTOM_INSTRUCTION
         
         if self.cot:
             instruction += self.COT

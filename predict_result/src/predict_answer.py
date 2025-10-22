@@ -8,10 +8,10 @@ from tqdm import tqdm
 from llms.language_models import get_registed_model
 import os
 from datasets import load_dataset
-from predict_result.evaluate_results import eval_result
+from evaluate_results import eval_result
 import json
 from multiprocessing import Pool
-from predict_result.build_qa_input import PromptBuilder
+from build_qa_input import PromptBuilder
 from functools import partial
 
 import json
@@ -126,7 +126,9 @@ def main(args, LLM):
     # Load dataset
     dataset = load_dataset(input_file, split=args.split)
     if args.add_rule:
-        rule_postfix = args.rule_path.replace("/", "_").replace(".", "_")
+        # Extract only filename from rule_path for cleaner directory structure
+        rule_filename = os.path.basename(args.rule_path).replace(".jsonl", "")
+        rule_postfix = rule_filename
         rule_dataset = utils.load_jsonl(args.rule_path)
         dataset = merge_rule_result(dataset, rule_dataset, args.n, args.filter_empty)
         if args.use_true:
@@ -144,9 +146,7 @@ def main(args, LLM):
         rule_postfix += "_each_line"
         
     print("Load dataset from finished")
-    output_dir = os.path.join(
-        args.predict_path, args.d, args.model_name, args.split, rule_postfix, str(args.encrypt)
-    )
+    output_dir = os.path.join("results", args.model_name, rule_postfix)
     print("Save results to: ", output_dir)
     # Predict
     if not os.path.exists(output_dir):
@@ -255,7 +255,12 @@ if __name__ == "__main__":
     argparser.add_argument("--encrypt", action="store_true")
 
     args, _ = argparser.parse_known_args()
-
+    
+    if args.model_name != "no-llm":
+        LLM = get_registed_model(args.model_name)
+        LLM.add_args(argparser)
+    else:
+        LLM = None
     args = argparser.parse_args()
 
     main(args, LLM)

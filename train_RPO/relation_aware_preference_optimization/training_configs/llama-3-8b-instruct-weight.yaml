@@ -1,0 +1,69 @@
+# Model arguments
+model_name_or_path: meta-llama/Llama-3.2-8B-Instruct
+torch_dtype: null
+attn_implementation: flash_attention_2
+lora_path: place_your_lora_checkpoint_directory
+
+# Use LoRA / PEFT 
+use_peft: true
+lora_r: 32 #256
+lora_alpha: 64 #512
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# Data training arguments
+dataset_mixer:
+  princeton-nlp/llama3-ultrafeedback-armorm: 1.0
+dataset_splits:
+- train
+
+preprocessing_num_workers: 12
+
+# SimPOTrainer arguments
+bf16: true
+fp16: false
+beta: 1
+gamma_beta_ratio: 0.3
+do_eval: false
+eval_strategy: "no"
+eval_steps: 400
+gradient_accumulation_steps: 8
+gradient_checkpointing: false
+gradient_checkpointing_kwargs:
+  use_reentrant: False
+hub_model_id: simpo-exps
+learning_rate: 1.0e-6
+log_level: info
+logging_steps: 5
+lr_scheduler_type: cosine
+max_length: 2048
+max_prompt_length: 1028
+num_train_epochs: 1
+optim: adamw_torch
+output_dir: place_your_output_directory
+run_name: llama-3-8b
+per_device_train_batch_size: 4 #3
+push_to_hub: false
+save_strategy: "steps"
+save_steps: 100
+report_to: []
+save_total_limit: 3
+seed: 42
+warmup_ratio: 0.1
+warmup_steps: 10 # webqsp에서는 10 (cwq에서는 없어도 됨)
+
+# --- SimPO similarity weighting (NEW) ---
+enable_similarity_weighting: true
+sim_alpha: 2.0
+sim_beta_lambda: 0.5
+sim_use_percentile: true
+sim_pair_agg: mean     # 처음은 mean 권장 (harmonic은 더 보수적, min은 다운웨이트 성향)
+sim_min_weight: 0.9
+sim_max_weight: 1.1

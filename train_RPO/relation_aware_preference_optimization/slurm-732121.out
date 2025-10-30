@@ -1,0 +1,341 @@
+/home/khyun33/anaconda3/envs/handbook/lib/python3.10/site-packages/torch/cuda/__init__.py:54: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[2025-10-30 11:17:17,156] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/khyun33/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-10-30 11:17:19,732] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+INFO:root:Using nproc_per_node=2.
+[2025-10-30 11:17:20,513] torch.distributed.run: [WARNING] 
+[2025-10-30 11:17:20,513] torch.distributed.run: [WARNING] *****************************************
+[2025-10-30 11:17:20,513] torch.distributed.run: [WARNING] Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+[2025-10-30 11:17:20,513] torch.distributed.run: [WARNING] *****************************************
+/home/khyun33/anaconda3/envs/handbook/lib/python3.10/site-packages/torch/cuda/__init__.py:54: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+/home/khyun33/anaconda3/envs/handbook/lib/python3.10/site-packages/torch/cuda/__init__.py:54: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+[2025-10-30 11:17:27,136] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-10-30 11:17:27,152] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+Warning: The cache directory for DeepSpeed Triton autotune, /home/khyun33/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+Warning: The cache directory for DeepSpeed Triton autotune, /home/khyun33/.triton/autotune, appears to be on an NFS system. While this is generally acceptable, if you experience slowdowns or hanging when DeepSpeed exits, it is recommended to set the TRITON_CACHE_DIR environment variable to a non-NFS path.
+[2025-10-30 11:17:28,388] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-10-30 11:17:28,388] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+[2025-10-30 11:17:29,679] [INFO] [comm.py:676:init_distributed] cdb=None
+[2025-10-30 11:17:29,679] [INFO] [comm.py:676:init_distributed] cdb=None
+[2025-10-30 11:17:29,680] [INFO] [comm.py:707:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+2025-10-30 11:17:29 - INFO - __main__ - Model parameters ModelArguments(base_model_revision=None, model_name_or_path='meta-llama/Meta-Llama-3.1-8B-Instruct', model_revision='main', model_code_revision=None, torch_dtype=None, tokenizer_name_or_path=None, trust_remote_code=False, attn_implementation='flash_attention_2', use_peft=True, lora_r=32, lora_alpha=64, lora_dropout=0.05, lora_target_modules=['q_proj', 'k_proj', 'v_proj', 'o_proj', 'gate_proj', 'up_proj', 'down_proj'], lora_modules_to_save=None, load_in_8bit=False, load_in_4bit=False, bnb_4bit_quant_type='nf4', use_bnb_nested_quant=False, bnb_4bit_quant_storage='uint8')
+2025-10-30 11:17:29 - INFO - __main__ - Data parameters DataArguments(chat_template=None, dataset_mixer={'princeton-nlp/llama3-ultrafeedback-armorm': 1.0}, text_column='text', dataset_splits=['train'], dataset_configs=None, preprocessing_num_workers=12, truncation_side=None, auto_insert_empty_system_msg=True)
+2025-10-30 11:17:29 - INFO - __main__ - Training/evaluation parameters SimPOConfig(
+_n_gpu=1,
+accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'non_blocking': False, 'gradient_accumulation_kwargs': None, 'use_configured_state': False},
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+average_tokens_across_devices=False,
+batch_eval_metrics=False,
+beta=1,
+bf16=True,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+dataloader_prefetch_factor=None,
+dataset_num_proc=None,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_dropout=True,
+disable_tqdm=False,
+do_eval=False,
+do_predict=False,
+do_train=False,
+enable_similarity_weighting=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_do_concat_batches=True,
+eval_on_start=False,
+eval_steps=400,
+eval_strategy=no,
+eval_use_gather_object=False,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gamma_beta_ratio=0.3,
+generate_during_eval=False,
+gradient_accumulation_steps=8,
+gradient_checkpointing=False,
+gradient_checkpointing_kwargs={'use_reentrant': False},
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=simpo-exps,
+hub_private_repo=None,
+hub_revision=None,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_for_metrics=[],
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+is_encoder_decoder=None,
+jit_mode_eval=False,
+label_names=None,
+label_pad_token_id=-100,
+label_smoothing=0,
+label_smoothing_factor=0.0,
+learning_rate=1e-06,
+length_column_name=length,
+liger_kernel_config=None,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=info,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=/share0/khyun33/myExp/[STEP1]simpo-weight/cwq/llama3-test/runs/Oct30_11-17-29_node55,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=5,
+logging_strategy=steps,
+loss_type=sigmoid,
+lr_scheduler_kwargs={},
+lr_scheduler_type=cosine,
+max_completion_length=None,
+max_grad_norm=1.0,
+max_length=2048,
+max_prompt_length=1028,
+max_steps=-1,
+max_target_length=None,
+metric_for_best_model=None,
+model_init_kwargs=None,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_train_epochs=1,
+optim=adamw_torch,
+optim_args=None,
+optim_target_modules=None,
+output_dir=/share0/khyun33/myExp/[STEP1]simpo-weight/cwq/llama3-test,
+overwrite_output_dir=False,
+padding_value=None,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=4,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=[],
+restore_callback_states_from_checkpoint=False,
+resume_from_checkpoint=None,
+run_name=llama-3-8b,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=100,
+save_strategy=steps,
+save_total_limit=3,
+seed=42,
+sft_weight=0.0,
+sim_alpha=2.0,
+sim_beta_lambda=0.5,
+sim_max_weight=1.1,
+sim_min_weight=0.9,
+sim_pair_agg=mean,
+sim_use_percentile=True,
+skip_memory_metrics=True,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torch_empty_cache_steps=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+truncation_mode=keep_end,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_liger_kernel=False,
+use_mps_device=False,
+warmup_ratio=0.1,
+warmup_steps=10,
+weight_decay=0.0,
+)
+2025-10-30 11:17:29 - INFO - __main__ - Training on the following splits: ['train : 235040']
+[INFO|tokenization_utils_base.py:2012] 2025-10-30 11:17:35,322 >> loading file tokenizer.json from cache at /home/khyun33/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659/tokenizer.json
+[INFO|tokenization_utils_base.py:2012] 2025-10-30 11:17:35,322 >> loading file tokenizer.model from cache at None
+[INFO|tokenization_utils_base.py:2012] 2025-10-30 11:17:35,322 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:2012] 2025-10-30 11:17:35,322 >> loading file special_tokens_map.json from cache at /home/khyun33/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659/special_tokens_map.json
+[INFO|tokenization_utils_base.py:2012] 2025-10-30 11:17:35,322 >> loading file tokenizer_config.json from cache at /home/khyun33/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2012] 2025-10-30 11:17:35,322 >> loading file chat_template.jinja from cache at None
+[INFO|tokenization_utils_base.py:2281] 2025-10-30 11:17:35,694 >> Special tokens have been added in the vocabulary, make sure the associated word embeddings are fine-tuned or trained.
+Formatting comparisons with prompt template (num_proc=12):   0%|          | 0/235040 [00:00<?, ? examples/s]Formatting comparisons with prompt template (num_proc=12):   0%|          | 0/235040 [00:00<?, ? examples/s]Formatting comparisons with prompt template (num_proc=12):   0%|          | 53/235040 [00:01<1:21:22, 48.13 examples/s]Formatting comparisons with prompt template (num_proc=12):   0%|          | 54/235040 [00:01<1:22:20, 47.56 examples/s]Formatting comparisons with prompt template (num_proc=12):   0%|          | 395/235040 [00:01<09:52, 396.01 examples/s]Formatting comparisons with prompt template (num_proc=12):   0%|          | 428/235040 [00:01<09:23, 416.71 examples/s]Formatting comparisons with prompt template (num_proc=12):   0%|          | 1118/235040 [00:01<03:21, 1158.11 examples/s]Formatting comparisons with prompt template (num_proc=12):   1%|          | 1367/235040 [00:01<02:46, 1399.82 examples/s]Formatting comparisons with prompt template (num_proc=12):   1%|          | 2270/235040 [00:01<01:39, 2336.65 examples/s]Formatting comparisons with prompt template (num_proc=12):   1%|          | 2688/235040 [00:01<01:25, 2702.60 examples/s]Formatting comparisons with prompt template (num_proc=12):   2%|▏         | 3942/235040 [00:01<01:00, 3791.13 examples/s]Formatting comparisons with prompt template (num_proc=12):   2%|▏         | 5843/235040 [00:02<00:42, 5420.20 examples/s]Formatting comparisons with prompt template (num_proc=12):   2%|▏         | 4440/235040 [00:02<01:05, 3522.66 examples/s]Formatting comparisons with prompt template (num_proc=12):   3%|▎         | 8000/235040 [00:02<00:33, 6843.87 examples/s]Formatting comparisons with prompt template (num_proc=12):   5%|▍         | 11636/235040 [00:02<00:19, 11666.45 examples/s]Formatting comparisons with prompt template (num_proc=12):   4%|▎         | 8656/235040 [00:02<00:34, 6617.38 examples/s]Formatting comparisons with prompt template (num_proc=12):   6%|▌         | 13346/235040 [00:02<00:18, 12077.15 examples/s]Formatting comparisons with prompt template (num_proc=12):   6%|▋         | 15014/235040 [00:02<00:17, 12856.42 examples/s]Formatting comparisons with prompt template (num_proc=12):   7%|▋         | 16669/235040 [00:02<00:16, 13378.87 examples/s]Formatting comparisons with prompt template (num_proc=12):   6%|▌         | 13087/235040 [00:02<00:26, 8485.06 examples/s]Formatting comparisons with prompt template (num_proc=12):   8%|▊         | 18280/235040 [00:02<00:16, 13173.79 examples/s]Formatting comparisons with prompt template (num_proc=12):   8%|▊         | 18975/235040 [00:02<00:14, 14438.79 examples/s]Formatting comparisons with prompt template (num_proc=12):   8%|▊         | 19832/235040 [00:02<00:16, 13266.13 examples/s]Formatting comparisons with prompt template (num_proc=12):   9%|▉         | 21363/235040 [00:03<00:15, 13771.39 examples/s]Formatting comparisons with prompt template (num_proc=12):   9%|▉         | 21481/235040 [00:03<00:15, 14222.97 examples/s]Formatting comparisons with prompt template (num_proc=12):  10%|▉         | 22974/235040 [00:03<00:14, 14380.39 examples/s]Formatting comparisons with prompt template (num_proc=12):  10%|█         | 23607/235040 [00:03<00:14, 14553.19 examples/s]Formatting comparisons with prompt template (num_proc=12):  11%|█         | 24696/235040 [00:03<00:13, 15137.77 examples/s]Formatting comparisons with prompt template (num_proc=12):  11%|█         | 25589/235040 [00:03<00:13, 14972.94 examples/s]Formatting comparisons with prompt template (num_proc=12):  11%|█▏        | 26674/235040 [00:03<00:12, 16191.72 examples/s]Formatting comparisons with prompt template (num_proc=12):  12%|█▏        | 27493/235040 [00:03<00:13, 15749.54 examples/s]Formatting comparisons with prompt template (num_proc=12):  12%|█▏        | 28782/235040 [00:03<00:11, 17476.94 examples/s]Formatting comparisons with prompt template (num_proc=12):  13%|█▎        | 29425/235040 [00:03<00:12, 16517.40 examples/s]Formatting comparisons with prompt template (num_proc=12):  13%|█▎        | 30756/235040 [00:03<00:11, 17856.57 examples/s]Formatting comparisons with prompt template (num_proc=12):  13%|█▎        | 31386/235040 [00:03<00:11, 16982.48 examples/s]Formatting comparisons with prompt template (num_proc=12):  14%|█▍        | 32790/235040 [00:03<00:11, 18324.13 examples/s]Formatting comparisons with prompt template (num_proc=12):  14%|█▍        | 33272/235040 [00:03<00:11, 17223.63 examples/s]Formatting comparisons with prompt template (num_proc=12):  15%|█▍        | 34800/235040 [00:03<00:10, 18831.21 examples/s]Formatting comparisons with prompt template (num_proc=12):  15%|█▍        | 35242/235040 [00:03<00:11, 17659.76 examples/s]Formatting comparisons with prompt template (num_proc=12):  16%|█▌        | 36905/235040 [00:03<00:10, 19376.77 examples/s]Formatting comparisons with prompt template (num_proc=12):  16%|█▌        | 37373/235040 [00:03<00:10, 18476.88 examples/s]Formatting comparisons with prompt template (num_proc=12):  17%|█▋        | 39011/235040 [00:03<00:09, 19832.39 examples/s]Formatting comparisons with prompt template (num_proc=12):  17%|█▋        | 39309/235040 [00:04<00:10, 18703.49 examples/s]Formatting comparisons with prompt template (num_proc=12):  18%|█▊        | 41180/235040 [00:04<00:09, 20364.56 examples/s]Formatting comparisons with prompt template (num_proc=12):  18%|█▊        | 41274/235040 [00:04<00:10, 18743.35 examples/s]Formatting comparisons with prompt template (num_proc=12):  18%|█▊        | 43325/235040 [00:04<00:09, 20650.02 examples/s]Formatting comparisons with prompt template (num_proc=12):  18%|█▊        | 43210/235040 [00:04<00:10, 18903.23 examples/s]Formatting comparisons with prompt template (num_proc=12):  19%|█▉        | 45610/235040 [00:04<00:08, 21299.60 examples/s]Formatting comparisons with prompt template (num_proc=12):  19%|█▉        | 45161/235040 [00:04<00:10, 18665.87 examples/s]Formatting comparisons with prompt template (num_proc=12):  20%|██        | 47756/235040 [00:04<00:08, 21330.29 examples/s]Formatting comparisons with prompt template (num_proc=12):  20%|██        | 47265/235040 [00:04<00:09, 19160.53 examples/s]Formatting comparisons with prompt template (num_proc=12):  21%|██▏       | 49957/235040 [00:04<00:08, 21502.08 examples/s]Formatting comparisons with prompt template (num_proc=12):  21%|██        | 49334/235040 [00:04<00:09, 19597.07 examples/s]Formatting comparisons with prompt template (num_proc=12):  22%|██▏       | 52148/235040 [00:04<00:08, 21594.56 examples/s]Formatting comparisons with prompt template (num_proc=12):  22%|██▏       | 51319/235040 [00:04<00:09, 19631.62 examples/s]Formatting comparisons with prompt template (num_proc=12):  23%|██▎       | 54369/235040 [00:04<00:08, 21737.50 examples/s]Formatting comparisons with prompt template (num_proc=12):  23%|██▎       | 53525/235040 [00:04<00:08, 20333.76 examples/s]Formatting comparisons with prompt template (num_proc=12):  24%|██▍       | 56572/235040 [00:04<00:08, 21445.53 examples/s]Formatting comparisons with prompt template (num_proc=12):  24%|██▎       | 55782/235040 [00:04<00:08, 20962.22 examples/s]Formatting comparisons with prompt template (num_proc=12):  25%|██▌       | 58814/235040 [00:04<00:08, 20651.74 examples/s]Formatting comparisons with prompt template (num_proc=12):  25%|██▍       | 57946/235040 [00:04<00:08, 21135.38 examples/s]Formatting comparisons with prompt template (num_proc=12):  26%|██▌       | 60936/235040 [00:05<00:08, 20797.95 examples/s]Formatting comparisons with prompt template (num_proc=12):  26%|██▌       | 60123/235040 [00:05<00:08, 21308.10 examples/s]Formatting comparisons with prompt template (num_proc=12):  27%|██▋       | 63064/235040 [00:05<00:08, 20915.40 examples/s]Formatting comparisons with prompt template (num_proc=12):  27%|██▋       | 62293/235040 [00:05<00:08, 21326.24 examples/s]Formatting comparisons with prompt template (num_proc=12):  28%|██▊       | 65232/235040 [00:05<00:08, 20271.48 examples/s]Formatting comparisons with prompt template (num_proc=12):  27%|██▋       | 64466/235040 [00:05<00:08, 21215.49 examples/s]Formatting comparisons with prompt template (num_proc=12):  29%|██▊       | 67269/235040 [00:05<00:08, 20143.96 examples/s]Formatting comparisons with prompt template (num_proc=12):  28%|██▊       | 66637/235040 [00:05<00:08, 20675.25 examples/s]Formatting comparisons with prompt template (num_proc=12):  30%|██▉       | 69413/235040 [00:05<00:08, 20393.52 examples/s]Formatting comparisons with prompt template (num_proc=12):  29%|██▉       | 68996/235040 [00:05<00:07, 21445.49 examples/s]Formatting comparisons with prompt template (num_proc=12):  30%|███       | 71553/235040 [00:05<00:08, 20171.41 examples/s]Formatting comparisons with prompt template (num_proc=12):  30%|███       | 71250/235040 [00:05<00:07, 21492.91 examples/s]Formatting comparisons with prompt template (num_proc=12):  31%|███▏      | 73661/235040 [00:05<00:07, 20380.49 examples/s]Formatting comparisons with prompt template (num_proc=12):  31%|███       | 73418/235040 [00:05<00:07, 21121.46 examples/s]Formatting comparisons with prompt template (num_proc=12):  32%|███▏      | 75776/235040 [00:05<00:07, 20469.75 examples/s]Formatting comparisons with prompt template (num_proc=12):  32%|███▏      | 75632/235040 [00:05<00:07, 21264.36 examples/s]Formatting comparisons with prompt template (num_proc=12):  33%|███▎      | 77965/235040 [00:05<00:07, 20853.88 examples/s]Formatting comparisons with prompt template (num_proc=12):  33%|███▎      | 77809/235040 [00:05<00:07, 21177.14 examples/s]Formatting comparisons with prompt template (num_proc=12):  34%|███▍      | 80103/235040 [00:05<00:07, 20982.01 examples/s]Formatting comparisons with prompt template (num_proc=12):  34%|███▍      | 80034/235040 [00:05<00:07, 21454.40 examples/s]Formatting comparisons with prompt template (num_proc=12):  35%|███▍      | 82205/235040 [00:06<00:07, 20627.72 examples/s]Formatting comparisons with prompt template (num_proc=12):  35%|███▍      | 82242/235040 [00:06<00:07, 21626.82 examples/s]Formatting comparisons with prompt template (num_proc=12):  36%|███▌      | 84354/235040 [00:06<00:07, 20720.17 examples/s]Formatting comparisons with prompt template (num_proc=12):  36%|███▌      | 84482/235040 [00:06<00:06, 21575.31 examples/s]Formatting comparisons with prompt template (num_proc=12):  37%|███▋      | 86521/235040 [00:06<00:07, 20976.60 examples/s]Formatting comparisons with prompt template (num_proc=12):  37%|███▋      | 86657/235040 [00:06<00:07, 20719.43 examples/s]Formatting comparisons with prompt template (num_proc=12):  38%|███▊      | 88973/235040 [00:06<00:06, 21982.96 examples/s]Formatting comparisons with prompt template (num_proc=12):  39%|███▉      | 91441/235040 [00:06<00:06, 22764.27 examples/s]Formatting comparisons with prompt template (num_proc=12):  38%|███▊      | 88800/235040 [00:06<00:07, 19357.00 examples/s]Formatting comparisons with prompt template (num_proc=12):  40%|███▉      | 93994/235040 [00:06<00:05, 23569.97 examples/s]Formatting comparisons with prompt template (num_proc=12):  39%|███▊      | 90785/235040 [00:06<00:07, 18726.83 examples/s]Formatting comparisons with prompt template (num_proc=12):  41%|████      | 96405/235040 [00:06<00:05, 23534.97 examples/s]Formatting comparisons with prompt template (num_proc=12):  39%|███▉      | 92813/235040 [00:06<00:07, 19108.05 examples/s]Formatting comparisons with prompt template (num_proc=12):  42%|████▏     | 98775/235040 [00:06<00:05, 22959.26 examples/s]Formatting comparisons with prompt template (num_proc=12):  40%|████      | 94801/235040 [00:06<00:07, 19303.32 examples/s]Formatting comparisons with prompt template (num_proc=12):  43%|████▎     | 101130/235040 [00:06<00:05, 22856.95 examples/s]Formatting comparisons with prompt template (num_proc=12):  41%|████      | 96814/235040 [00:06<00:07, 19489.59 examples/s]Formatting comparisons with prompt template (num_proc=12):  44%|████▍     | 103521/235040 [00:06<00:05, 23084.43 examples/s]Formatting comparisons with prompt template (num_proc=12):  42%|████▏     | 98918/235040 [00:06<00:06, 19627.57 examples/s]Formatting comparisons with prompt template (num_proc=12):  43%|████▎     | 100950/235040 [00:07<00:06, 19810.78 examples/s]Formatting comparisons with prompt template (num_proc=12):  45%|████▌     | 105850/235040 [00:07<00:05, 21810.22 examples/s]Formatting comparisons with prompt template (num_proc=12):  46%|████▌     | 108163/235040 [00:07<00:05, 22161.56 examples/s]Formatting comparisons with prompt template (num_proc=12):  44%|████▍     | 102988/235040 [00:07<00:06, 19847.53 examples/s]Formatting comparisons with prompt template (num_proc=12):  47%|████▋     | 110560/235040 [00:07<00:05, 22673.81 examples/s]Formatting comparisons with prompt template (num_proc=12):  45%|████▍     | 105017/235040 [00:07<00:06, 19129.98 examples/s]Formatting comparisons with prompt template (num_proc=12):  48%|████▊     | 112931/235040 [00:07<00:05, 22965.33 examples/s]Formatting comparisons with prompt template (num_proc=12):  45%|████▌     | 106938/235040 [00:07<00:06, 19116.63 examples/s]Formatting comparisons with prompt template (num_proc=12):  49%|████▉     | 115327/235040 [00:07<00:05, 23239.42 examples/s]Formatting comparisons with prompt template (num_proc=12):  46%|████▋     | 108908/235040 [00:07<00:06, 18464.32 examples/s]Formatting comparisons with prompt template (num_proc=12):  50%|█████     | 117698/235040 [00:07<00:05, 23052.21 examples/s]Formatting comparisons with prompt template (num_proc=12):  47%|████▋     | 110876/235040 [00:07<00:06, 18612.13 examples/s]Formatting comparisons with prompt template (num_proc=12):  51%|█████     | 120021/235040 [00:07<00:04, 23029.75 examples/s]Formatting comparisons with prompt template (num_proc=12):  48%|████▊     | 112769/235040 [00:07<00:06, 18428.92 examples/s]Formatting comparisons with prompt template (num_proc=12):  52%|█████▏    | 122550/235040 [00:07<00:04, 23639.63 examples/s]Formatting comparisons with prompt template (num_proc=12):  49%|████▉     | 114710/235040 [00:07<00:06, 18702.26 examples/s]Formatting comparisons with prompt template (num_proc=12):  53%|█████▎    | 124985/235040 [00:07<00:04, 23436.59 examples/s]Formatting comparisons with prompt template (num_proc=12):  50%|████▉     | 116637/235040 [00:07<00:06, 18618.02 examples/s]Formatting comparisons with prompt template (num_proc=12):  54%|█████▍    | 127427/235040 [00:08<00:04, 23461.86 examples/s]Formatting comparisons with prompt template (num_proc=12):  50%|█████     | 118573/235040 [00:08<00:06, 18619.44 examples/s]Formatting comparisons with prompt template (num_proc=12):  55%|█████▌    | 129819/235040 [00:08<00:04, 23575.99 examples/s]Formatting comparisons with prompt template (num_proc=12):  51%|█████▏    | 120503/235040 [00:08<00:06, 18596.38 examples/s]Formatting comparisons with prompt template (num_proc=12):  56%|█████▋    | 132233/235040 [00:08<00:04, 23670.67 examples/s]Formatting comparisons with prompt template (num_proc=12):  52%|█████▏    | 122457/235040 [00:08<00:06, 18761.18 examples/s]Formatting comparisons with prompt template (num_proc=12):  57%|█████▋    | 134643/235040 [00:08<00:04, 23738.05 examples/s]Formatting comparisons with prompt template (num_proc=12):  53%|█████▎    | 124386/235040 [00:08<00:06, 18171.60 examples/s]Formatting comparisons with prompt template (num_proc=12):  58%|█████▊    | 137064/235040 [00:08<00:04, 23855.33 examples/s]Formatting comparisons with prompt template (num_proc=12):  54%|█████▎    | 126249/235040 [00:08<00:05, 18185.31 examples/s]Formatting comparisons with prompt template (num_proc=12):  59%|█████▉    | 139637/235040 [00:08<00:03, 24256.84 examples/s]Formatting comparisons with prompt template (num_proc=12):  55%|█████▍    | 128131/235040 [00:08<00:05, 18235.03 examples/s]Formatting comparisons with prompt template (num_proc=12):  60%|██████    | 142162/235040 [00:08<00:03, 24536.77 examples/s]Formatting comparisons with prompt template (num_proc=12):  55%|█████▌    | 129985/235040 [00:08<00:06, 17122.95 examples/s]Formatting comparisons with prompt template (num_proc=12):  62%|██████▏   | 144652/235040 [00:08<00:03, 24638.60 examples/s]Formatting comparisons with prompt template (num_proc=12):  56%|█████▌    | 131841/235040 [00:08<00:05, 17480.37 examples/s]Formatting comparisons with prompt template (num_proc=12):  63%|██████▎   | 147199/235040 [00:08<00:03, 24843.85 examples/s]Formatting comparisons with prompt template (num_proc=12):  57%|█████▋    | 133764/235040 [00:08<00:05, 17919.20 examples/s]Formatting comparisons with prompt template (num_proc=12):  64%|██████▎   | 149737/235040 [00:08<00:03, 24056.81 examples/s]Formatting comparisons with prompt template (num_proc=12):  58%|█████▊    | 135585/235040 [00:08<00:05, 17804.28 examples/s]Formatting comparisons with prompt template (num_proc=12):  65%|██████▍   | 152257/235040 [00:09<00:03, 23981.04 examples/s]Formatting comparisons with prompt template (num_proc=12):  59%|█████▊    | 137521/235040 [00:09<00:05, 18044.16 examples/s]Formatting comparisons with prompt template (num_proc=12):  66%|██████▌   | 154703/235040 [00:09<00:03, 23693.74 examples/s]Formatting comparisons with prompt template (num_proc=12):  59%|█████▉    | 139583/235040 [00:09<00:05, 18754.59 examples/s]Formatting comparisons with prompt template (num_proc=12):  67%|██████▋   | 157178/235040 [00:09<00:03, 23365.18 examples/s]Formatting comparisons with prompt template (num_proc=12):  60%|██████    | 141550/235040 [00:09<00:04, 19000.71 examples/s]Formatting comparisons with prompt template (num_proc=12):  68%|██████▊   | 159576/235040 [00:09<00:03, 23175.89 examples/s]Formatting comparisons with prompt template (num_proc=12):  61%|██████    | 143550/235040 [00:09<00:04, 19277.96 examples/s]Formatting comparisons with prompt template (num_proc=12):  69%|██████▉   | 161940/235040 [00:09<00:03, 22470.65 examples/s]Formatting comparisons with prompt template (num_proc=12):  62%|██████▏   | 145668/235040 [00:09<00:04, 19819.67 examples/s]Formatting comparisons with prompt template (num_proc=12):  70%|██████▉   | 164203/235040 [00:09<00:03, 22458.29 examples/s]Formatting comparisons with prompt template (num_proc=12):  63%|██████▎   | 147783/235040 [00:09<00:04, 20192.69 examples/s]Formatting comparisons with prompt template (num_proc=12):  71%|███████   | 166562/235040 [00:09<00:03, 21982.03 examples/s]Formatting comparisons with prompt template (num_proc=12):  64%|██████▎   | 149809/235040 [00:09<00:04, 20177.66 examples/s]Formatting comparisons with prompt template (num_proc=12):  72%|███████▏  | 168816/235040 [00:09<00:02, 22101.29 examples/s]Formatting comparisons with prompt template (num_proc=12):  65%|██████▍   | 151875/235040 [00:09<00:04, 19823.01 examples/s]Formatting comparisons with prompt template (num_proc=12):  73%|███████▎  | 171040/235040 [00:09<00:02, 21725.15 examples/s]Formatting comparisons with prompt template (num_proc=12):  66%|██████▌   | 153975/235040 [00:09<00:04, 20092.78 examples/s]Formatting comparisons with prompt template (num_proc=12):  74%|███████▎  | 173277/235040 [00:10<00:02, 21420.47 examples/s]Formatting comparisons with prompt template (num_proc=12):  66%|██████▋   | 156113/235040 [00:09<00:03, 20450.06 examples/s]Formatting comparisons with prompt template (num_proc=12):  75%|███████▍  | 175528/235040 [00:10<00:02, 21075.67 examples/s]Formatting comparisons with prompt template (num_proc=12):  67%|██████▋   | 158217/235040 [00:10<00:03, 20599.39 examples/s]Formatting comparisons with prompt template (num_proc=12):  76%|███████▌  | 177652/235040 [00:10<00:02, 21077.27 examples/s]Formatting comparisons with prompt template (num_proc=12):  68%|██████▊   | 160339/235040 [00:10<00:03, 20672.43 examples/s]Formatting comparisons with prompt template (num_proc=12):  76%|███████▋  | 179804/235040 [00:10<00:02, 21056.11 examples/s]Formatting comparisons with prompt template (num_proc=12):  69%|██████▉   | 162456/235040 [00:10<00:03, 20563.97 examples/s]Formatting comparisons with prompt template (num_proc=12):  77%|███████▋  | 182013/235040 [00:10<00:02, 21010.09 examples/s]Formatting comparisons with prompt template (num_proc=12):  70%|███████   | 164659/235040 [00:10<00:03, 20753.40 examples/s]Formatting comparisons with prompt template (num_proc=12):  78%|███████▊  | 184125/235040 [00:10<00:02, 20980.47 examples/s]Formatting comparisons with prompt template (num_proc=12):  71%|███████   | 166925/235040 [00:10<00:03, 20877.94 examples/s]Formatting comparisons with prompt template (num_proc=12):  79%|███████▉  | 186264/235040 [00:10<00:02, 20607.47 examples/s]Formatting comparisons with prompt template (num_proc=12):  72%|███████▏  | 169120/235040 [00:10<00:03, 21113.04 examples/s]Formatting comparisons with prompt template (num_proc=12):  80%|████████  | 188378/235040 [00:10<00:02, 20531.97 examples/s]Formatting comparisons with prompt template (num_proc=12):  73%|███████▎  | 171344/235040 [00:10<00:02, 21422.61 examples/s]Formatting comparisons with prompt template (num_proc=12):  81%|████████  | 190535/235040 [00:10<00:02, 20589.41 examples/s]Formatting comparisons with prompt template (num_proc=12):  74%|███████▍  | 173540/235040 [00:10<00:02, 21311.73 examples/s]Formatting comparisons with prompt template (num_proc=12):  82%|████████▏ | 192717/235040 [00:10<00:02, 20707.41 examples/s]Formatting comparisons with prompt template (num_proc=12):  75%|███████▍  | 175740/235040 [00:10<00:02, 20675.27 examples/s]Formatting comparisons with prompt template (num_proc=12):  83%|████████▎ | 194878/235040 [00:11<00:01, 20357.37 examples/s]Formatting comparisons with prompt template (num_proc=12):  76%|███████▌  | 177906/235040 [00:11<00:02, 20787.08 examples/s]Formatting comparisons with prompt template (num_proc=12):  84%|████████▍ | 196985/235040 [00:11<00:01, 20306.26 examples/s]Formatting comparisons with prompt template (num_proc=12):  77%|███████▋  | 180116/235040 [00:11<00:02, 21159.57 examples/s]Formatting comparisons with prompt template (num_proc=12):  78%|███████▊  | 182636/235040 [00:11<00:02, 22320.37 examples/s]Formatting comparisons with prompt template (num_proc=12):  85%|████████▍ | 199134/235040 [00:11<00:01, 18956.03 examples/s]Formatting comparisons with prompt template (num_proc=12):  79%|███████▉  | 185171/235040 [00:11<00:02, 23189.32 examples/s]Formatting comparisons with prompt template (num_proc=12):  86%|████████▌ | 201067/235040 [00:11<00:01, 18143.01 examples/s]Formatting comparisons with prompt template (num_proc=12):  80%|███████▉  | 187548/235040 [00:11<00:02, 23341.53 examples/s]Formatting comparisons with prompt template (num_proc=12):  86%|████████▋ | 202975/235040 [00:11<00:01, 18285.61 examples/s]Formatting comparisons with prompt template (num_proc=12):  81%|████████  | 189980/235040 [00:11<00:01, 23526.01 examples/s]Formatting comparisons with prompt template (num_proc=12):  87%|████████▋ | 204935/235040 [00:11<00:01, 18524.86 examples/s]Formatting comparisons with prompt template (num_proc=12):  82%|████████▏ | 192429/235040 [00:11<00:01, 23782.18 examples/s]Formatting comparisons with prompt template (num_proc=12):  88%|████████▊ | 206799/235040 [00:11<00:01, 18269.95 examples/s]Formatting comparisons with prompt template (num_proc=12):  83%|████████▎ | 194913/235040 [00:11<00:01, 24004.88 examples/s]Formatting comparisons with prompt template (num_proc=12):  89%|████████▉ | 208679/235040 [00:11<00:01, 18111.10 examples/s]Formatting comparisons with prompt template (num_proc=12):  84%|████████▍ | 197484/235040 [00:11<00:01, 24483.22 examples/s]Formatting comparisons with prompt template (num_proc=12):  90%|████████▉ | 210527/235040 [00:11<00:01, 17339.46 examples/s]Formatting comparisons with prompt template (num_proc=12):  85%|████████▌ | 199997/235040 [00:11<00:01, 24630.15 examples/s]Formatting comparisons with prompt template (num_proc=12):  90%|█████████ | 212337/235040 [00:12<00:01, 17329.63 examples/s]Formatting comparisons with prompt template (num_proc=12):  86%|████████▌ | 202480/235040 [00:12<00:01, 24377.26 examples/s]Formatting comparisons with prompt template (num_proc=12):  91%|█████████ | 214208/235040 [00:12<00:01, 17374.79 examples/s]Formatting comparisons with prompt template (num_proc=12):  87%|████████▋ | 204923/235040 [00:12<00:01, 24357.86 examples/s]Formatting comparisons with prompt template (num_proc=12):  92%|█████████▏| 216063/235040 [00:12<00:01, 16903.96 examples/s]Formatting comparisons with prompt template (num_proc=12):  88%|████████▊ | 207401/235040 [00:12<00:01, 23597.85 examples/s]Formatting comparisons with prompt template (num_proc=12):  93%|█████████▎| 217786/235040 [00:12<00:01, 16717.99 examples/s]Formatting comparisons with prompt template (num_proc=12):  89%|████████▉ | 209864/235040 [00:12<00:01, 21899.76 examples/s]Formatting comparisons with prompt template (num_proc=12):  93%|█████████▎| 219501/235040 [00:12<00:00, 15826.66 examples/s]Formatting comparisons with prompt template (num_proc=12):  90%|█████████ | 212200/235040 [00:12<00:01, 22130.46 examples/s]Formatting comparisons with prompt template (num_proc=12):  94%|█████████▍| 221223/235040 [00:12<00:00, 16070.06 examples/s]Formatting comparisons with prompt template (num_proc=12):  91%|█████████▏| 214562/235040 [00:12<00:00, 22506.95 examples/s]Formatting comparisons with prompt template (num_proc=12):  95%|█████████▍| 222927/235040 [00:12<00:00, 16120.43 examples/s]Formatting comparisons with prompt template (num_proc=12):  92%|█████████▏| 216867/235040 [00:12<00:00, 22494.27 examples/s]Formatting comparisons with prompt template (num_proc=12):  96%|█████████▌| 224560/235040 [00:12<00:00, 15273.72 examples/s]Formatting comparisons with prompt template (num_proc=12):  93%|█████████▎| 219206/235040 [00:12<00:00, 21867.01 examples/s]Formatting comparisons with prompt template (num_proc=12):  94%|█████████▍| 221474/235040 [00:12<00:00, 20140.35 examples/s]Formatting comparisons with prompt template (num_proc=12):  96%|█████████▌| 226199/235040 [00:12<00:00, 13674.36 examples/s]Formatting comparisons with prompt template (num_proc=12):  95%|█████████▌| 223633/235040 [00:13<00:00, 19687.52 examples/s]Formatting comparisons with prompt template (num_proc=12):  97%|█████████▋| 227714/235040 [00:13<00:00, 12594.11 examples/s]Formatting comparisons with prompt template (num_proc=12):  96%|█████████▌| 225749/235040 [00:13<00:00, 18213.39 examples/s]Formatting comparisons with prompt template (num_proc=12):  97%|█████████▋| 229073/235040 [00:13<00:00, 11571.23 examples/s]Formatting comparisons with prompt template (num_proc=12):  97%|█████████▋| 227680/235040 [00:13<00:00, 17582.66 examples/s]Formatting comparisons with prompt template (num_proc=12):  98%|█████████▊| 230357/235040 [00:13<00:00, 10588.86 examples/s]Formatting comparisons with prompt template (num_proc=12):  98%|█████████▊| 229581/235040 [00:13<00:00, 16538.66 examples/s]Formatting comparisons with prompt template (num_proc=12):  98%|█████████▊| 231304/235040 [00:13<00:00, 15906.40 examples/s]Formatting comparisons with prompt template (num_proc=12):  99%|█████████▊| 231527/235040 [00:13<00:00, 9003.90 examples/s] Formatting comparisons with prompt template (num_proc=12):  99%|█████████▉| 233005/235040 [00:13<00:00, 13540.66 examples/s]Formatting comparisons with prompt template (num_proc=12):  99%|█████████▉| 232515/235040 [00:13<00:00, 7978.41 examples/s]Formatting comparisons with prompt template (num_proc=12): 100%|█████████▉| 234538/235040 [00:13<00:00, 12340.38 examples/s]Formatting comparisons with prompt template (num_proc=12):  99%|█████████▉| 233481/235040 [00:13<00:00, 7108.15 examples/s]Formatting comparisons with prompt template (num_proc=12): 100%|█████████▉| 234374/235040 [00:14<00:00, 6545.91 examples/s]Formatting comparisons with prompt template (num_proc=12): 100%|██████████| 235040/235040 [00:14<00:00, 16592.20 examples/s]
+2025-10-30 11:17:50 - INFO - __main__ - Prompt sample 167621 of the raw training set:
+
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Question: What Greece neighbor has a country calling code larger than 359?
+Start entity: Country
+Partial Path: 
+Predict ONLY the next relation (schema name). 
+If the path should end now, output "STOP".
+Output just the relation string (or "STOP").<|eot_id|>
+2025-10-30 11:17:50 - INFO - __main__ - Chosen sample 167621 of the raw training set:
+
+<|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+base.locations.countries.continent<|eot_id|>
+2025-10-30 11:17:50 - INFO - __main__ - Rejected sample 167621 of the raw training set:
+
+<|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+location.location.adjoin_s<|eot_id|>
+2025-10-30 11:17:50 - INFO - __main__ - Prompt sample 29184 of the raw training set:
+
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Question: What team did Manny Ramirez play for, that was nominated for the Outstanding Team ESPY Award?
+Start entity: Outstanding Team ESPY Award
+Partial Path: 
+Predict ONLY the next relation (schema name). 
+If the path should end now, output "STOP".
+Output just the relation string (or "STOP").<|eot_id|>
+2025-10-30 11:17:50 - INFO - __main__ - Chosen sample 29184 of the raw training set:
+
+<|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+award.award_category.nominees<|eot_id|>
+2025-10-30 11:17:50 - INFO - __main__ - Rejected sample 29184 of the raw training set:
+
+<|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+baseball.batting_statistics.team<|eot_id|>
+2025-10-30 11:17:50 - INFO - __main__ - Prompt sample 6556 of the raw training set:
+
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+Question: What team that plays in Newcastle International Sports Centre does Heskey play for?
+Start entity: Newcastle International Sports Centre
+Partial Path: sports.sports_facility.home_venue_for
+Predict ONLY the next relation (schema name). 
+If the path should end now, output "STOP".
+Output just the relation string (or "STOP").<|eot_id|>
+2025-10-30 11:17:50 - INFO - __main__ - Chosen sample 6556 of the raw training set:
+
+<|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+sports.team_venue_relationship.team<|eot_id|>
+2025-10-30 11:17:50 - INFO - __main__ - Rejected sample 6556 of the raw training set:
+
+<|start_header_id|>system<|end_header_id|>
+
+Cutting Knowledge Date: December 2023
+Today Date: 26 Jul 2024
+
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>
+
+soccer.football_player_stats.team<|eot_id|>
+/home/khyun33/RPO-RAG/train_RPO/relation_aware_preference_optimization/scripts/simpo_trainer.py:111: UserWarning: You passed a model_id to the SimPOTrainer. This will automatically create an `AutoModelForCausalLM` or a `PeftModel` (if you passed a `peft_config`) for you.
+  warnings.warn(
+Formatting comparisons with prompt template (num_proc=12): 100%|██████████| 235040/235040 [00:14<00:00, 16210.77 examples/s]
+/home/khyun33/RPO-RAG/train_RPO/relation_aware_preference_optimization/scripts/simpo_trainer.py:111: UserWarning: You passed a model_id to the SimPOTrainer. This will automatically create an `AutoModelForCausalLM` or a `PeftModel` (if you passed a `peft_config`) for you.
+  warnings.warn(
+[INFO|configuration_utils.py:711] 2025-10-30 11:17:51,134 >> loading configuration file config.json from cache at /home/khyun33/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659/config.json
+[INFO|configuration_utils.py:774] 2025-10-30 11:17:51,135 >> Model config LlamaConfig {
+  "architectures": [
+    "LlamaForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 128000,
+  "eos_token_id": [
+    128001,
+    128008,
+    128009
+  ],
+  "head_dim": 128,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 131072,
+  "mlp_bias": false,
+  "model_type": "llama",
+  "num_attention_heads": 32,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "pretraining_tp": 1,
+  "rms_norm_eps": 1e-05,
+  "rope_scaling": {
+    "factor": 8.0,
+    "high_freq_factor": 4.0,
+    "low_freq_factor": 1.0,
+    "original_max_position_embeddings": 8192,
+    "rope_type": "llama3"
+  },
+  "rope_theta": 500000.0,
+  "tie_word_embeddings": false,
+  "transformers_version": "4.53.3",
+  "use_cache": true,
+  "vocab_size": 128256
+}
+
+[INFO|modeling_utils.py:1267] 2025-10-30 11:17:52,205 >> loading weights file model.safetensors from cache at /home/khyun33/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3.1-8B-Instruct/snapshots/0e9e39f249a16976918f6564b8830bc894c89659/model.safetensors.index.json
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]slurmstepd-node55: error: *** JOB 732121 ON node55 CANCELLED AT 2025-10-30T11:18:15 ***

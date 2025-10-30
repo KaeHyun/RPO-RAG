@@ -1,8 +1,7 @@
 # Model arguments
-model_name_or_path: meta-llama/Llama-3.2-8B-Instruct
+model_name_or_path: meta-llama/Meta-Llama-3.1-8B-Instruct
 torch_dtype: null
 attn_implementation: flash_attention_2
-lora_path: place_your_lora_checkpoint_directory
 
 # Use LoRA / PEFT 
 use_peft: true
@@ -47,7 +46,7 @@ max_length: 2048
 max_prompt_length: 1028
 num_train_epochs: 1
 optim: adamw_torch
-output_dir: place_your_output_directory
+output_dir: /share0/khyun33/myExp/[STEP1]simpo-weight/cwq/llama3-test
 run_name: llama-3-8b
 per_device_train_batch_size: 4 #3
 push_to_hub: false

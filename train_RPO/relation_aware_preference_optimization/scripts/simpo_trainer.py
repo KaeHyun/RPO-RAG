@@ -495,6 +495,12 @@ class SimPOTrainer(Trainer):
                     labels=torch.tensor(batch["chosen_labels"])
                 )
 
+        # weight 반영 (enw) #
+        cw = float(feature.get("chosen_similarity_weight", 0.0))
+        rw = float(feature.get("rejected_similarity_weight", 0.0))
+        batch["sim_cw"] = cw
+        batch["sim_rw"] = rw
+
         return batch
 
     @staticmethod
@@ -702,10 +708,69 @@ class SimPOTrainer(Trainer):
             chosen_labels,
         ) = self.concatenated_forward(model, batch)
 
-        losses, chosen_rewards, rejected_rewards = self.simpo_loss(
-            policy_chosen_logps,
-            policy_rejected_logps,
-        )
+        # losses, chosen_rewards, rejected_rewards = self.simpo_loss(
+        #     policy_chosen_logps,
+        #     policy_rejected_logps,
+        # )
+
+        # ===== [ADD] similarity-weighting: 평균 내기 전에 가중치 곱하기 =====
+        use_sw = getattr(self.args, "enable_similarity_weighting", False)
+        if use_sw:
+            # 거리 텐서 꺼내기
+            cw = batch.get("sim_cw")
+            rw = batch.get("sim_rw")
+            if not isinstance(cw, torch.Tensor): cw = torch.zeros_like(policy_chosen_logps)
+            if not isinstance(rw, torch.Tensor): rw = torch.zeros_like(policy_chosen_logps)
+            if cw.ndim > 1: cw = cw.squeeze(-1)
+            if rw.ndim > 1: rw = rw.squeeze(-1)
+
+            # 거리 -> 신뢰도 변환 (chosen: s_w, rejected: s_l) + 페어 전역 스칼라 w_pair
+            s_w, s_l, w_pair = self._conf_from_dist(cw, rw)
+
+            # 비대칭 β 스케일
+            lam = getattr(self.args, "sim_beta_lambda", 0.5)
+            beta_w = self.beta * (1.0 + lam * (s_w - 0.5))
+            beta_l = self.beta * (1.0 + lam * (s_l - 0.5))
+
+            # Δ 비대칭화
+            delta = beta_w * policy_chosen_logps - beta_l * policy_rejected_logps
+
+            # 마진은 기본값 유지(필요시 적응 마진으로 확장 가능)
+            gamma_eff = self.gamma_beta_ratio
+            logits = delta - gamma_eff
+
+            # SimPO 손실 형태 유지
+            if self.loss_type == "sigmoid":
+                losses = (
+                    -F.logsigmoid(logits) * (1 - self.label_smoothing)
+                    - F.logsigmoid(-logits) * self.label_smoothing
+                )
+            elif self.loss_type == "hinge":
+                losses = torch.relu(1 - logits)
+            else:
+                raise ValueError(f"Unknown loss type: {self.loss_type}")
+
+            # 전역 신뢰도 스칼라 가중
+            losses = losses * w_pair
+
+            # 보조 메트릭용 reward(기존과 동일 정의로 유지)
+            chosen_rewards  = self.beta * policy_chosen_logps.detach()
+            rejected_rewards = self.beta * policy_rejected_logps.detach()
+
+            # 로깅(모니터링)
+            metrics[f"{prefix}sim/s_w_mean"]   = s_w.mean().detach().cpu()
+            metrics[f"{prefix}sim/s_l_mean"]   = s_l.mean().detach().cpu()
+            metrics[f"{prefix}sim/avg_weight"] = w_pair.mean().detach().cpu()
+            metrics[f"{prefix}sim/min_weight"] = w_pair.min().detach().cpu()
+            metrics[f"{prefix}sim/max_weight"] = w_pair.max().detach().cpu()
+        else:
+            # 기존 SimPO 경로
+            losses, chosen_rewards, rejected_rewards = self.simpo_loss(
+                policy_chosen_logps,
+                policy_rejected_logps,
+            )
+    # ==================================================================
+
 
         loss = losses.mean()
 
@@ -755,6 +820,54 @@ class SimPOTrainer(Trainer):
         if return_outputs:
             return (loss, metrics)
         return loss
+
+    # weight 기반 loss 계산 
+    def _conf_from_dist(self, cw: torch.Tensor, rw: torch.Tensor):
+        """
+        입력:
+        cw, rw: chosen/rejected의 '거리' (batch,). 값이 클수록 덜 신뢰.
+        출력:
+        s_w: chosen 신뢰도 (가까울수록 ↑) in (0,1]
+        s_l: rejected 신뢰도 (멀수록 ↑) in [0,1)
+        w:   페어 전역 스칼라 가중치 (클립 포함)
+        """
+        device = self.accelerator.device
+        cw, rw = cw.to(device).float(), rw.to(device).float()
+
+        def _norm(x: torch.Tensor) -> torch.Tensor:
+            if getattr(self.args, "sim_use_percentile", False):
+                ranks = torch.argsort(torch.argsort(x))
+                denom = max(x.numel() - 1, 1)
+                return ranks.float() / denom
+            xmin, xmax = x.min(), x.max()
+            if (xmax - xmin) < 1e-8:
+                return torch.zeros_like(x)
+            return (x - xmin) / (xmax - xmin)
+
+        uc, ur = _norm(cw), _norm(rw)
+        alpha = self.args.sim_alpha
+
+        # chosen: 가까울수록 신뢰 ↑
+        s_w = torch.exp(-alpha * uc)            # (0,1]
+        # rejected: 멀수록 신뢰 ↑
+        s_l = 1.0 - torch.exp(-alpha * ur)      # [0,1)
+
+        # 페어 전역 스칼라 가중치: 신뢰 요약
+        mode = getattr(self.args, "sim_pair_agg", "mean")  # 기본 mean 권장
+        if mode == "harmonic":
+            c_pair = 2 * s_w * s_l / (s_w + s_l + 1e-8)
+        elif mode == "min":
+            c_pair = torch.minimum(s_w, s_l)
+        elif mode == "max":
+            c_pair = torch.maximum(s_w, s_l)
+        else:  # "mean"
+            c_pair = 0.5 * (s_w + s_l)
+
+        both_zero = (cw == 0) & (rw == 0)
+        w = torch.where(both_zero, torch.ones_like(c_pair), c_pair)
+        w = torch.clamp(w, self.args.sim_min_weight, self.args.sim_max_weight)
+        return s_w, s_l, w
+
 
     def simpo_get_batch_samples(self, model, batch: Dict[str, torch.LongTensor]) -> Tuple[str, str]:
         """Generate samples from the model and reference model for the given batch of inputs."""

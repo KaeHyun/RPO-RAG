@@ -69,3 +69,23 @@ class SimPOConfig(TrainingArguments):
 
     dataset_num_proc: Optional[int] = None
 
+    ## similarity-weighting (new)를 반영하기 위한! ## 
+
+    # 유사도 가중 사용 여부
+    enable_similarity_weighting: bool = False
+
+    # 거리 -> 신뢰도 감쇠 강도
+    sim_alpha: float = 2.0
+
+    # Δ 비대칭 스케일 강도 (0~1 권장)
+    sim_beta_lambda: float = 0.5
+
+    # 배치 내 정규화 방식
+    sim_use_percentile: bool = True
+
+    # 페어 전역 스칼라 요약 방식: "mean" | "harmonic" | "min" | "max"
+    sim_pair_agg: str = "mean"
+
+    # 스칼라 가중 클리핑
+    sim_min_weight: float = 0.9
+    sim_max_weight: float = 1.1

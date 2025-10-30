@@ -45,6 +45,28 @@ logger = logging.getLogger(__name__)
 
 MISTRAL_CHAT_TEMPLATE = "{% if messages[0]['role'] == 'system' %}{% set loop_messages = messages[1:] %}{% set system_message = messages[0]['content'].strip() + '\n\n' %}{% else %}{% set loop_messages = messages %}{% set system_message = '' %}{% endif %}{% for message in loop_messages %}{% if loop.index0 == 0 %}{% set content = system_message + message['content'] %}{% else %}{% set content = message['content'] %}{% endif %}{% if message['role'] == 'user' %}{{ '[INST] ' + content.strip() + ' [/INST]' }}{% elif message['role'] == 'assistant' %}{{ ' '  + content.strip() + ' ' + eos_token }}{% endif %}{% endfor %}"
 
+LLAMA2_CHAT_TEMPLATE = (
+    "{% if messages and messages[0]['role'] == 'system' %}"
+    "{% set loop_messages = messages[1:] %}"
+    "{% set system_message = messages[0]['content'].strip() + '\\n\\n' %}"
+    "{% else %}"
+    "{% set loop_messages = messages %}"
+    "{% set system_message = '' %}"
+    "{% endif %}"
+    "{{ bos_token }}"
+    "{% for message in loop_messages %}"
+      "{% if message['role'] == 'user' %}"
+        "{% if loop.index0 == 0 %}"
+          "[INST] {{ (system_message + message['content']).strip() }} [/INST]"
+        "{% else %}"
+          "[INST] {{ message['content'].strip() }} [/INST]"
+        "{% endif %}"
+      "{% elif message['role'] == 'assistant' %}"
+        " {{ message['content'].strip() }} {{ eos_token }}"
+      "{% endif %}"
+    "{% endfor %}"
+)
+
 def apply_chat_template(
     example,
     tokenizer,
@@ -54,6 +76,8 @@ def apply_chat_template(
 ):
     if change_template == "mistral":
         tokenizer.chat_template = MISTRAL_CHAT_TEMPLATE
+    elif change_template == "llama2":
+        tokenizer.chat_template = LLAMA2_CHAT_TEMPLATE
     if task in ["sft", "generation"]:
         messages = example["messages"]
         # We add an empty system message if there is none
@@ -159,7 +183,9 @@ def main():
         data_args,
         splits=data_args.dataset_splits,
         configs=data_args.dataset_configs,
-        columns_to_keep=["messages", "chosen", "rejected", "prompt", "completion", "label"],
+        columns_to_keep=["messages", "chosen", "rejected", "prompt", "completion", "label",
+        # === NEW: pass-through similarity weights from your dataset ===
+        "chosen_similarity_weight", "rejected_similarity_weight",],
         # seed=training_args.seed,
     )
     logger.info(
@@ -175,6 +201,9 @@ def main():
 
     if "mistral" in model_args.model_name_or_path.lower():
         change_template = "mistral"
+    elif "llama2" in model_args.model_name_or_path.lower() or "llama-2" in model_args.model_name_or_path.lower():
+        change_template = "llama2"  
+        print("llama2-7b 성공적으로 changed!")
     else:
         change_template = None
     #####################
@@ -194,7 +223,7 @@ def main():
     )
 
     # Replace column names with what TRL needs, text_chosen -> chosen and text_rejected -> rejected
-    for split in raw_datasets.keys():#["train", "test"]:
+    for split in raw_datasets.keys():
         raw_datasets[split] = raw_datasets[split].rename_columns(
             {"text_prompt": "prompt", "text_chosen": "chosen", "text_rejected": "rejected"}
         )
@@ -253,7 +282,7 @@ def main():
         model=model,
         args=training_args,
         train_dataset=raw_datasets["train"],
-        eval_dataset=None, #raw_datasets["test"],
+        eval_dataset=None,
         tokenizer=tokenizer,
         peft_config=get_peft_config(model_args),
     )

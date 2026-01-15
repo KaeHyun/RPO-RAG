@@ -57,3 +57,37 @@ Jointly optimizes relation-aware preference learning and answer-centered prompt 
 
 ## Quick Start 
 
+## 🚀 How to Use
+
+### 1️⃣ Install Requirements
+Install the required dependencies:
+
+```bash
+pip install -r requirements.txt
+
+## 2️⃣ Train Model
+
+RPO-RAG is trained via **two-stage optimization**, corresponding to the two core objectives described in the paper.
+Each stage is implemented in a separate directory.
+
+---
+### (1) Relation-aware Preference Optimization
+
+Relation-aware preference optimization is implemented by **modifying the SimPO framework**.
+We adapt SimPO to operate at the **relation level** for knowledge graph reasoning.
+
+- **Codebase**: adapted from *SimPO*
+- **Directory**: `./train_RPO/relation_aware_preference_optimization`
+
+Please refer to the scripts and configurations inside this directory for training details.
+
+---
+### (2) Task-aware Optimization (Answer-Centered Prompting)
+
+Task-aware optimization is performed via **instruction fine-tuning** using models and utilities released by **Unsloth**.
+
+- **Base framework**: *Unsloth*
+- **Objective**: instruction fine-tuning for answer-centered reasoning
+- **Directory**: `./train_RPO/tast_aware_optimization`
+
+The training scripts and configurations are provided in the corresponding folder.

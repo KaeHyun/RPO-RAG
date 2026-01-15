@@ -56,15 +56,12 @@ Retrieves reasoning paths that are semantically consistent with the query using 
 Jointly optimizes relation-aware preference learning and answer-centered prompt design to align small LLMs with structured KG reasoning.
 
 ## Quick Start 
-
-## 🚀 How to Use
-
 ### 1️⃣ Install Requirements
 Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
-
+```
 ## 2️⃣ Train Model
 
 RPO-RAG is trained via **two-stage optimization**, corresponding to the two core objectives described in the paper.

@@ -57,34 +57,40 @@ Jointly optimizes relation-aware preference learning and answer-centered prompt 
 
 ## Quick Start 
 ### 1️⃣ Install Requirements
-Install the required dependencies:
-
+Each training stage has its own dependencies.
+Please install the requirements inside the corresponding directory.
 ```bash
 pip install -r requirements.txt
 ```
-## 2️⃣ Train Model
 
-RPO-RAG is trained via **two-stage optimization**, corresponding to the two core objectives described in the paper.
-Each stage is implemented in a separate directory.
+### 2️⃣ Train Model
 
----
-### (1) Relation-aware Preference Optimization
-
-Relation-aware preference optimization is implemented by **modifying the SimPO framework**.
-We adapt SimPO to operate at the **relation level** for knowledge graph reasoning.
-
-- **Codebase**: adapted from *SimPO*
-- **Directory**: `./train_RPO/relation_aware_preference_optimization`
-
-Please refer to the scripts and configurations inside this directory for training details.
+RPO-RAG is trained via two-stage optimization, corresponding to the two core objectives described in the paper.
+Each stage is implemented in a separate directory with detailed instructions.
 
 ---
-### (2) Task-aware Optimization (Answer-Centered Prompting)
+**(1) Relation-aware Preference Optimization**
+This stage performs relation-level preference optimization by adapting the SimPO framework for knowledge graph reasoning.
+- Base framework: SimPO (adapted)
+- Objective: relation-aware preference optimization
+- Directory: `./train_RPO/relation_aware_preference_optimization`
 
-Task-aware optimization is performed via **instruction fine-tuning** using models and utilities released by **Unsloth**.
+Please refer to `relation_aware_preference_optimization/README.md` for detailed instructions.
 
-- **Base framework**: *Unsloth*
-- **Objective**: instruction fine-tuning for answer-centered reasoning
-- **Directory**: `./train_RPO/tast_aware_optimization`
+---
+**(2) Task-aware Optimization (Answer-Centered Prompting)**
 
-The training scripts and configurations are provided in the corresponding folder.
+This stage performs instruction fine-tuning for answer-centered reasoning using the Unsloth framework.
+
+- Base framework: Unsloth
+- Objective: task-aware instruction fine-tuning
+- Directory: `./train_RPO/task_aware_optimization`
+
+Please refer to `task_aware_optimization/README.md` for detailed instructions.
+
+### 3️⃣ Evaluate Model
+Model evaluation is performed using the scripts provided in the `predict_result` directory.
+- Purpose: generate and evaluate model predictions
+- Directory: `./predict_result`
+
+Please refer to `predict_result/README.md` for detailed instructions.

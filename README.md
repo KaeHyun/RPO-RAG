@@ -55,7 +55,7 @@ Retrieves reasoning paths that are semantically consistent with the query using 
 **3️⃣ Dual-Objective Optimization**  
 Jointly optimizes relation-aware preference learning and answer-centered prompt design to align small LLMs with structured KG reasoning.
 
-## Quick Start 
+## 🛠️ Quick Start 
 ### 1️⃣ Install Requirements
 Each training stage has its own dependencies.
 Please install the requirements inside the corresponding directory.

@@ -6,7 +6,10 @@ This directory provides scripts for evaluating trained RPO-RAG models by generat
 1) Install evaluation-specific dependencies:
 
   ```bash
-  pip install -r requirements.txt```
+  pip install -r requirements.txt
+  ```
 
 2) Execute the evaluation script:
-```bash evaluate-rpo-rag.sh```
+```bash
+evaluate-rpo-rag.sh
+```

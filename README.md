@@ -62,8 +62,11 @@ Please install the requirements inside the corresponding directory.
 ```bash
 pip install -r requirements.txt
 ```
+### 2️⃣ Download Dataset
+To support reproducibility, we provide the preprocessed training dataset.
+👉 [[Google Drive Link]](https://drive.google.com/drive/u/0/folders/18IQgu1bCjDh9U6EyZIdQ2aApsMjNq9M7)
 
-### 2️⃣ Train Model
+### 3️⃣ Train Model
 
 RPO-RAG is trained via two-stage optimization, corresponding to the two core objectives described in the paper.
 Each stage is implemented in a separate directory with detailed instructions.

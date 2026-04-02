@@ -96,7 +96,7 @@ This stage performs instruction fine-tuning for answer-centered reasoning using 
 
 Please refer to `task_aware_optimization/README.md` for detailed instructions.
 
-### 3️⃣ Evaluate Model
+### 4️⃣ Evaluate Model
 Model evaluation is performed using the scripts provided in the `predict_result` directory.
 - Purpose: generate and evaluate model predictions
 - Directory: `./predict_result`

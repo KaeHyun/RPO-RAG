@@ -70,6 +70,11 @@ To support reproducibility, we provide the preprocessed training dataset.
 
 RPO-RAG is trained via two-stage optimization, corresponding to the two core objectives described in the paper.
 Each stage is implemented in a separate directory with detailed instructions.
+You can also download trained model in below links
+- [[RPO-RAG 8B]](https://huggingface.co/KaeHyun/RPO-RAG-8B)  
+- [[RPO-RAG 7B]](https://huggingface.co/KaeHyun/RPO-RAG-7B)  
+- [[RPO-RAG 3B]](https://huggingface.co/KaeHyun/RPO-RAG-3B)  
+- [[RPO-RAG 1B]](https://huggingface.co/KaeHyun/RPO-RAG-1B)
 
 ---
 **(1) Relation-aware Preference Optimization**

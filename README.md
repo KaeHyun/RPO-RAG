@@ -48,6 +48,7 @@ The framework consists of three main components:
 
 **1️⃣ Query-Path Semantic Sampling**  
 Constructs query-aligned reasoning paths via semantic clustering, providing high-quality supervision for both retrieval and reasoning.
+I will share the Colab link that I used for this part of the work: [[Colab link]](https://drive.google.com/file/d/1oIAwwuqYFW0kvQNEQrgo2qyyrqXLElu5/view?usp=sharing)
 
 **2️⃣ Semantic-Matching Retriever**  
 Retrieves reasoning paths that are semantically consistent with the query using a lightweight pretrained language model.
